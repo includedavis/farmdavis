@@ -13,6 +13,11 @@ class UsersController < ApplicationController
   #   Create new user
   # GET /signup
   def new
+    if current_user
+      redirect_to current_user, notice: "You already logged in!"
+      return
+    end
+    
     @user = User.new()
   end
 

@@ -4,6 +4,9 @@ class SessionsController < ApplicationController
   #   Login page
   # GET /login
   def new
+    if current_user
+      redirect_to current_user, notice: "You already logged in!"
+    end
   end
 
   # create
@@ -26,6 +29,7 @@ class SessionsController < ApplicationController
   #   Destroy session (logout)
   # DELETE /logout
   def destroy
+    reset_session
     redirect_to root_url, notice: "User logged out."
   end
 end
