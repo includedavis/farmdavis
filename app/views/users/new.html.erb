@@ -1,0 +1,22 @@
+<h1>Create a new user</h1>
+<p>Will log you in as well. Ignore how hella ugly this is.</p>
+
+<%= form_for @user do |f| %>
+  <%= f.label :name %><br />
+  <%= f.text_field :name %> <br />
+
+  <%= f.label :email %><br />
+  <%= f.email_field :email %> <br />
+
+  <%= f.label :password %><br />
+  <%= f.password_field :password %> <br />
+
+  <%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %> <br />
+  <%= link_to "Login", login_path %>
+
+  <%= f.submit %>
+<% end %>
+
+<br />
+<%= link_to "Home", root_path %>
