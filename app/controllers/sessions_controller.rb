@@ -17,7 +17,6 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      puts "logging in user: " + user.id.to_s
       redirect_to current_user, notice: "You're in!"
     else
       redirect_to '/login', alert: "User not logged in"

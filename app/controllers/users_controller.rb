@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       redirect_to current_user, notice: "You already logged in!"
       return
     end
-    
+
     @user = User.new()
   end
 
@@ -43,8 +43,11 @@ class UsersController < ApplicationController
   # set_user
   # ========
   #   Set the user for Action
+  # Edge Case:
+  #   User does not exist - Redirect to root
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find_by_id(params[:id]) # Does not error if user DNE
+    redirect_to root_path unless @user
   end
 
   # user_params
