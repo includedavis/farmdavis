@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'donations/new'
+
   # Sessions: /sessions
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
@@ -8,6 +10,9 @@ Rails.application.routes.draw do
   # Users: /users
   get 'signup' , to: 'users#new'
   resources :users, only: [:show, :create]
+
+  # Donations: /donations
+  resources :donations
 
   # Static Pages: /static_pages
   get 'static_pages/about'
