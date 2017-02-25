@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe UsersController, type: :controller do
   describe "GET show" do
     it "should require a user" do
-      user = gen_user
+      user = login_user
 
       get :show, params: {id: user.id}
       expect(response).to have_http_status(:ok)
@@ -12,6 +12,25 @@ RSpec.describe UsersController, type: :controller do
     it "should error if user does not exist" do
       get :show, params: {id: -1}
       expect(response).to redirect_to(root_path)
+    end
+
+    context "current user navigates to show" do
+      it "should return ok status" do
+        user = login_user
+
+        get :show, params: {id: user.id}
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context "current user navigates to different user's show" do
+      it "should redirect to root" do
+        user = login_user
+        other_user = gen_user
+
+        get :show, params: {id: other_user.id}
+        expect(response).to redirect_to root_path
+      end
     end
   end
 

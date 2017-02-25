@@ -6,6 +6,8 @@ class UsersController < ApplicationController
   #   Show user page
   # GET /users/:id
   def show
+    require_current_user_match params[:id]
+    return
   end
 
   # new
@@ -48,6 +50,18 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find_by_id(params[:id]) # Does not error if user DNE
     redirect_to root_path unless @user
+  end
+
+  # require_current_user_match
+  # ==========================
+  #   Require the user specified match current_user
+  #  Params:
+  #   id - ID to match with
+  def require_current_user_match(id)
+    if !current_user || current_user.corrupt? || current_user.id != id.to_i
+      flash[:alert] = "Whoops. That's not yours."
+      redirect_to root_path
+    end
   end
 
   # user_params

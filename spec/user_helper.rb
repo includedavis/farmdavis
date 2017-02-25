@@ -10,6 +10,18 @@ module UserHelpers
     FactoryGirl.create(:User, password: pass, password_confirmation: pass)
   end
 
+  # gen_roled_user
+  # ==============
+  #   Create a new user with specified role and add to DB
+  # Params:
+  #   role - The role for the user
+  #   pass - Password for user (OPTIONAL)
+  # Returns:
+  #   New user object
+  def gen_roled_user(role, pass="test")
+    FactoryGirl.create(:User, role: role, password: pass, password_confirmation: pass)
+  end
+
   # login_user
   # ==========
   #   Log a user in (Assumes password is Test unless specified)
