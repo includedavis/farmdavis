@@ -1,7 +1,7 @@
 FactoryGirl.define do
-  factory :donation do
-    date "2017-02-22"
-    crop "MyText"
-    quantity "9.99"
+  factory :Donation do |f|
+    f.date "2017-02-22"
+    f.crop "corn"
+    f.quantity "5"
   end
 end
