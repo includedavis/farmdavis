@@ -52,7 +52,10 @@ class DonationsController < ApplicationController
       @donation = Donation.find_by_id(params[:id]) # Does not error if donation DNE
       redirect_to root_path unless @donation
     end
-
+    
+    # donation_params
+    # ===============
+    #   Trusted paramaters
   	def donation_params
       params.require(:donation).permit(:date, :crop, :quantity)
     end
