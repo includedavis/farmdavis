@@ -16,6 +16,10 @@ If you are looking for a visual git client check out:
 4. Commit in present tense. "Add feature" instead of "Added a feature"
 5. Only submit pull requests if the code is tested. _(Preferably with RSpec)_
 
+### Running Tests
+1. ```$ rspec```
+2. For more info: http://rspec.info/
+
 ## Running the server
 
 1. ```$ heroku local```  
