@@ -1,4 +1,60 @@
-<h1>Showing user <%= @user.name %></h1>
-<p>TODO: Restrict to actual user.</p>
+<h1>Showing user: <%= @user.name %></h1>
+<hr />
+
 <%= link_to "Home", root_path %>
 <%= link_to "Logout", logout_path %>
+<p>
+  Here are the actions you have permissions for:
+  <ul>
+    <li><%= link_to "View donations", donations_path %></li>
+    <li><%= link_to "Add donation", new_donation_path %></li>
+  </ul>
+</p>
+
+<br />
+<% if @user.admin? %>
+<div id="admin-panel" style="padding: 5%; border: 1px solid black;">
+  <div style="text-align: center;">
+  <h3>Admin Panel</h3>
+  <p>Role: <%= @user.role %></p>
+  </div>
+
+  <div style="text-align: center;">
+    <h4>Add a user.</h4>
+    <%= form_for @new_user do |f| %>
+      <%= f.label :name %><br />
+      <%= f.text_field :name %> <br />
+
+      <%= f.label :email %><br />
+      <%= f.email_field :email %> <br />
+
+      <%= f.label :password %><br />
+      <%= f.password_field :password %> <br />
+
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation %> <br />
+
+      <% if @user.super_admin? %>
+        <%= f.select(:role, options_for_select([
+          ["Standard", "standard"],
+          ["Admin", "admin"]
+        ])) %>
+      <% else %>
+        <%= f.select(:role, options_for_select(
+          [["Standard", "standard"]]), disabled: true) %>
+      <% end %> <br /><br />
+      <%= f.submit "Create" %>
+    <% end %>
+  </div>
+
+  <div>
+    <h3>User List:</h3>
+    <ul>
+      <% @users.each do |user| %>
+        <li><%= user.name %> | <%= user.email %> [<%= user.role.upcase %>]</li>
+      <% end %>
+    </ul>
+  </div>
+
+</div>
+<% end %>

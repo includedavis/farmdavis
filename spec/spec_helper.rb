@@ -18,6 +18,7 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require "user_helper.rb"
+require "donation_helper.rb"
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -36,6 +37,7 @@ RSpec.configure do |config|
 
   # Helpers
   config.include UserHelpers
+  config.include DonationHelpers
 
   # DB Cleaner
   config.append_after(:each) do

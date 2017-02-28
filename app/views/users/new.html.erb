@@ -1,6 +1,9 @@
-<h1>Create a new user</h1>
-<p>Will log you in as well. Ignore how hella ugly this is.</p>
+<h1>Super Admin Signup</h1>
+<p>This page is for debugging only. In production, a single super admin will be
+created via the rails console. The super admin will have the ability to add more
+admins and standard users via the admin console.</p>
 
+<p>SUPER ADMIN WILL BE CREATED!</p>
 <%= form_for @user do |f| %>
   <%= f.label :name %><br />
   <%= f.text_field :name %> <br />
@@ -13,6 +16,9 @@
 
   <%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %> <br />
+
+  <!-- SUPER ADMIN IS CREATED -->
+  <%= f.hidden_field :role, :value => "super_admin"%>
   <%= link_to "Login", login_path %>
 
   <%= f.submit %>

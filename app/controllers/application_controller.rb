@@ -10,7 +10,12 @@ class ApplicationController < ActionController::Base
   # Returns:
   #   @current_user - The current user can be accessed via helper_method
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
+    if @current_user == nil
+      reset_session
+    end
+
+    return @current_user
   end
 
   # require_valid_user

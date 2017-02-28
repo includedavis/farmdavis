@@ -1,0 +1,10 @@
+<h1>Showing all <%= pluralize(@donations.count, "donation") %>.</h1>
+
+<ul>
+<% @donations.each do |donation| %>
+  <li><%= @donation.date %>, <% @donation.crop %>, <% @donation.quantity %></li>
+<% end %>
+</ul>
+
+<%= link_to "Home", root_path %>
+<%= link_to "Create Donation", new_donation_path %>

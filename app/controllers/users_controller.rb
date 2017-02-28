@@ -7,7 +7,10 @@ class UsersController < ApplicationController
   # GET /users/:id
   def show
     require_current_user_match params[:id]
-    return
+    if current_user.admin?
+      @new_user = User.new()
+      @users = User.all
+    end
   end
 
   # new
@@ -68,6 +71,7 @@ class UsersController < ApplicationController
   # ===========
   #   Trusted paramaters
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email,
+      :password, :password_confirmation, :role)
   end
 end
