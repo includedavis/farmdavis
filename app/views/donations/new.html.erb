@@ -10,6 +10,13 @@
     <%= f.label :quantity %>
     <%= f.number_field :quantity %>
 
+    <%= f.label "Donation Recipient" %>
+    <%= f.text_field :donated_to %>
+
+    <%= f.label :harvested_from %>
+    <%= f.text_field :harvested_from %>
+
     <%= f.submit "Record Donation" %>
   <% end %>
 </div>
+<%= link_to "Home", root_path %>
