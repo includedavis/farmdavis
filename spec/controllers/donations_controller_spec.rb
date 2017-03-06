@@ -41,7 +41,15 @@ RSpec.describe DonationsController, type: :controller do
       login_user
       donation_count = Donation.count
 
-      get :create, params: {donation: FactoryGirl.attributes_for(:Donation)}
+      get :create, params: {donations: [FactoryGirl.attributes_for(:Donation)]}
+      expect(Donation.count).to eql(donation_count + 1)
+    end
+
+    it "should not save invalid donations" do
+      login_user
+      donation_count = Donation.count
+
+      get :create, params: {donations: [FactoryGirl.attributes_for(:Donation), FactoryGirl.attributes_for(:InvalidDonation1), FactoryGirl.attributes_for(:InvalidDonation2)]}
       expect(Donation.count).to eql(donation_count + 1)
     end
   end
