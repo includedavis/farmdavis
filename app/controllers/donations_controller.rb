@@ -29,7 +29,7 @@ class DonationsController < ApplicationController
   #
   # GET /donations/new
   def new
-  	@donation = Donation.new
+  	@donations = Array.new(10) {Donation.new}
   end
 
   # create
@@ -38,12 +38,18 @@ class DonationsController < ApplicationController
   #
   # POST /donations/create
   def create
-  	@donation = Donation.new(donation_params)
-  	if @donation.save
-  		redirect_to @donation
-  	else
-  		render 'new'
-  	end
+    @donations = donation_params
+    @donations.each do |donation|
+    	@donation = Donation.new(subdonation_params donation)
+      @donation.save
+    end
+    @donations = Donation.all
+    render 'index'
+  	#if @donation.save
+  	#	redirect_to @donation
+  	#else
+  	#	render 'new'
+  	#end
   end
 
   private
@@ -60,8 +66,8 @@ class DonationsController < ApplicationController
     # donation_params
     # ===============
     #   Trusted paramaters
-  	def donation_params
-      params.require(:donation).permit(:date, :crop, :quantity,
+    def subdonation_params(subparams)
+      subparams.permit(:date, :crop, :quantity,
         :donated_to, :harvested_from)
     end
 end
