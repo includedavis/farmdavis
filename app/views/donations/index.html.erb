@@ -1,9 +1,20 @@
 <h1>Showing all <%= pluralize(@donations.count, "donation") %>.</h1>
 
+
+<%= form_tag("/donations", method: "get") do %>
+  <%= label_tag(:crop, "Crop type:") %>
+  <%= text_field_tag(:crop) %>
+
+  <%= label_tag(:quantity, "Quantity:") %>
+  <%= text_field_tag(:quantity) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
 <ul>
 <% @donations.each do |donation| %>
 
-  <li><%= donation.date %>, <%= donation.crop %>, <%= donation.quantity %></li>
+  <li><%= donation.date %>, <%= donation.crop %>, <%= donation.quantity %>
+      , <%= donation.donated_to %>, <%= donation.harvested_from %></li>
 <% end %>
 </ul>
 

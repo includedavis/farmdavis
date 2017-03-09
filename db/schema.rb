@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170224181653) do
+ActiveRecord::Schema.define(version: 20170303040438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,8 +19,10 @@ ActiveRecord::Schema.define(version: 20170224181653) do
     t.date     "date"
     t.text     "crop"
     t.decimal  "quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "harvested_from"
+    t.string   "donated_to"
   end
 
   create_table "users", force: :cascade do |t|
