@@ -1,3 +1,6 @@
+#Donation
+#date crop quantity harvested_from donated_to comments
+
 class Donation < ApplicationRecord
 	validates :date, presence: true
 	validates :crop, presence: true

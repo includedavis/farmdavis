@@ -1,4 +1,6 @@
-<%= date_field_tag "donations[][date]", Date.today %>
-
-<%= text_field_tag "donations[][crop]" %>
-<%= number_field_tag "donations[][quantity]" %>
+Date <%= date_field_tag "donations[][date]", Date.today %>
+Crop <%= text_field_tag "donations[][crop]" %>
+Quantity <%= number_field_tag "donations[][quantity]" %>
+Harvested From <%= text_field_tag "donations[][harvested_from]" %>
+Donated To <%= text_field_tag "donations[][donated_to]" %>
+Comments <%= text_field_tag "donations[][comments]" %>

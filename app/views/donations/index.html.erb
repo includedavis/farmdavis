@@ -10,13 +10,19 @@
   <%= submit_tag("Search") %>
 <% end %>
 
-<ul>
-<% @donations.each do |donation| %>
+<table>
+  <th>ID</th> <th>Date</th> <th>Crop</th> <th>Quantity</th> <th>Harvested from</th> <th>Donated to</th> <th>Comments</th>
+  <% @donations.each do |donation| %>
 
-  <li><%= donation.date %>, <%= donation.crop %>, <%= donation.quantity %>
-      , <%= donation.donated_to %>, <%= donation.harvested_from %></li>
-<% end %>
-</ul>
+  <tr>
+    <td><%= donation.id %></td>
+  	<td><%= donation.date %></td> <td><%= donation.crop %></td> <td><%= donation.quantity %></td>
+  	<td><%= donation.donated_to %></td> <td><%= donation.harvested_from %></td> <td><%= donation.comments %></td>
+  	<td><%= link_to "Details", donation %>
+  </tr>
+
+  <% end %>
+</table>
 
 
 <%= link_to "Home", root_path %>
