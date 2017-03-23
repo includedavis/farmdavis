@@ -8,7 +8,11 @@ class DonationsController < ApplicationController
   #
   # GET /donations
   def index
-    @donations = Donation.all
+    if params[:crop]
+      @donations = Donation.where("crop = ?", params[:crop])
+    else
+      @donations = Donation.all
+    end
   end
 
   # show
@@ -58,19 +62,12 @@ class DonationsController < ApplicationController
       @donation = Donation.find_by_id(params[:id]) # Does not error if donation DNE
       redirect_to root_path unless @donation
     end
-    
+
     # donation_params
     # ===============
     #   Trusted paramaters
-  	#def donation_params(subparams)
-    #  params.require(:donations).permit(:date, :crop, :quantity)
-    #end
-
-    def donation_params
-      params.require(:donations)
-    end
-
     def subdonation_params(subparams)
-      subparams.permit(:date, :crop, :quantity)
+      subparams.permit(:date, :crop, :quantity,
+        :donated_to, :harvested_from)
     end
 end

@@ -1,1 +1,4 @@
-<%= @donation.date %>, <%= @donation.crop %>, <%= @donation.quantity %>
+<%= @donation.date %>, <%= @donation.crop %>, <%= @donation.quantity %>,
+  <%= @donation.donated_to %>, <%= @donation.harvested_from %> <br />
+<%= link_to "Home", root_path %>
+<%= link_to "View All", donations_path %>
