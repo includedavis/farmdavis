@@ -52,6 +52,24 @@ class DonationsController < ApplicationController
   	#end
   end
 
+  # edit
+  # ====
+  #   Edit an existing donation
+  #
+  # GET /donations/:id/edit
+  def edit
+    @donation = Donation.find(params[:id])
+  end
+
+  def update
+    @donation = Donation.find(params[:id])
+    if @donation.update_attributes(full_donation_params)
+      redirect_to @donation
+    else
+      render 'edit' #need to flash a failure message
+    end
+  end
+
   private
     # set_donation
     # ============
@@ -63,11 +81,25 @@ class DonationsController < ApplicationController
       redirect_to root_path unless @donation
     end
 
+    def full_donation_params
+      params.require(:donation).permit(:date, :crop, :quantity,
+                                   :harvested_from, :donated_to, :comments)
+    end
+
     # donation_params
+    # ===============
+    # Required parameters
+    def donation_params
+      params.require(:donations)
+    end
+ 
+
+
+    # subdonation_params
     # ===============
     #   Trusted paramaters
     def subdonation_params(subparams)
       subparams.permit(:date, :crop, :quantity,
-        :donated_to, :harvested_from)
+        :donated_to, :harvested_from, :comments)
     end
 end

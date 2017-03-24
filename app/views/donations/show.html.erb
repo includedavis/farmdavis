@@ -1,4 +1,11 @@
-<%= @donation.date %>, <%= @donation.crop %>, <%= @donation.quantity %>,
-  <%= @donation.donated_to %>, <%= @donation.harvested_from %> <br />
+<h1> Donation <%= @donation.id %> </h1>
+<table>
+  <th>Date</th> <th>Crop</th> <th>Quantity</th> <th>Harvested from</th> <th>Donated to</th> <th>Comments</th>
+  <tr>
+    <td><%= @donation.date %></td> <td><%= @donation.crop %></td> <td><%= @donation.quantity %></td>
+    <td><%= @donation.donated_to %></td> <td><%= @donation.harvested_from %></td> <td><%= @donation.comments %></td>
+    <td><%= link_to "Edit", edit_donation_path(@donation) %>
+  </tr>
+</table>
 <%= link_to "Home", root_path %>
 <%= link_to "View All", donations_path %>
