@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :create]
 
   # Donations: /donations
-  resources :donations, only: [:show, :create, :index, :new, :edit, :update]
+  resources :donations, only: [:show, :create, :index, :new, :edit, :update, :destroy]
 
   # Static Pages: /static_pages
   get 'static_pages/about'
