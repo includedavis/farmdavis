@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170323182752) do
+ActiveRecord::Schema.define(version: 20170329201540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.text     "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "category_crops", force: :cascade do |t|
+    t.integer  "category_id"
+    t.integer  "crop_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_category_crops_on_category_id", using: :btree
+    t.index ["crop_id"], name: "index_category_crops_on_crop_id", using: :btree
+  end
+
+  create_table "crops", force: :cascade do |t|
+    t.text     "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "donations", force: :cascade do |t|
     t.date     "date"
@@ -35,4 +56,6 @@ ActiveRecord::Schema.define(version: 20170323182752) do
     t.string   "role",            default: "standard"
   end
 
+  add_foreign_key "category_crops", "categories"
+  add_foreign_key "category_crops", "crops"
 end
