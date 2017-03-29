@@ -5,6 +5,7 @@
     <td><%= @donation.date %></td> <td><%= @donation.crop %></td> <td><%= @donation.quantity %></td>
     <td><%= @donation.donated_to %></td> <td><%= @donation.harvested_from %></td> <td><%= @donation.comments %></td>
     <td><%= link_to "Edit", edit_donation_path(@donation) %>
+    <td><%= link_to "Delete", @donation, method: :delete %>
   </tr>
 </table>
 <%= link_to "Home", root_path %>

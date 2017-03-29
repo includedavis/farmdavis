@@ -53,4 +53,50 @@ RSpec.describe DonationsController, type: :controller do
       expect(Donation.count).to eql(donation_count + 1)
     end
   end
+
+  describe "GET edit" do
+    it "gets an existing donation" do
+      expect(:get => "donations/1/edit").to route_to(
+        :controller => "donations",
+        :action => "edit",
+        :id => "1"
+      )
+    end
+
+    it "non users should not be redirected" do
+      get :edit, params: {id: 1}
+      expect(response).to redirect_to('/login')
+    end
+  end
+
+  describe "PUT update" do
+    before :each do
+      @donation = FactoryGirl.create(:Donation)
+    end
+
+    it "updates an existing donation" do
+      expect(:put => "donations/1").to route_to(
+        :controller => "donations",
+        :action => "update",
+        :id => "1"
+      )
+    end
+  end
+
+  describe "DELETE destroy" do
+
+    before :each do
+      @donation = FactoryGirl.create(:Donation)
+    end
+
+    context "success" do
+
+      it "deletes the donation" do
+        expect{ 
+          delete :destroy, params:{id: @donation}
+        }.to change(Donation, :count).by(-1)
+      end
+
+    end
+  end
 end

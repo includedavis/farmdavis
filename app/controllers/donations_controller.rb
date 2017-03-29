@@ -1,6 +1,6 @@
 class DonationsController < ApplicationController
-  before_action :require_user, only: [:create, :new]
-  before_action :set_donation, only: [:show]
+  before_action :require_user, only: [:create, :new, :edit, :update]
+  before_action :set_donation, only: [:show, :edit, :destroy]
 
   # index
   # =====
@@ -61,6 +61,11 @@ class DonationsController < ApplicationController
     @donation = Donation.find(params[:id])
   end
 
+
+  # update
+  # ======
+  #   Update an existing donation
+  # PUT /donations/:id/update
   def update
     @donation = Donation.find(params[:id])
     if @donation.update_attributes(full_donation_params)
@@ -68,6 +73,15 @@ class DonationsController < ApplicationController
     else
       render 'edit' #need to flash a failure message
     end
+  end
+
+  # destroy
+  # =======
+  #   Delete an existing donation
+  # DELETE /donations/:id
+  def destroy
+    @donation.destroy
+    redirect_to donations_path
   end
 
   private
