@@ -3,6 +3,7 @@
 <% if current_user %>
   <%= link_to "Logout", logout_path %>
   <%= link_to "View/Add Donations", donations_path %>
+  <%= link_to "View/Add Crops", crops_path %>
   <%= link_to "My account", user_path(current_user) %>
 <% else %>
   <%= link_to "Create New Super Admin", signup_path %>

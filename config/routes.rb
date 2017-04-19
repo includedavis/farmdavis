@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'categories/new'
+
+  get 'categories/show'
+
+  get 'categories/index'
+
   # Sessions: /sessions
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
@@ -11,6 +17,9 @@ Rails.application.routes.draw do
 
   # Donations: /donations
   resources :donations, only: [:show, :create, :index, :new, :edit, :update, :destroy]
+
+  # Crops: /crops
+  resources :crops, only: [:show, :create, :index, :new]
 
   # Static Pages: /static_pages
   get 'static_pages/about'
