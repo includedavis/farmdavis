@@ -6,4 +6,7 @@ class Donation < ApplicationRecord
 	validates :crop, presence: true
 	validates :quantity, presence: true
 	before_save {self.crop = crop.downcase } # all crop names should be lowercase
+
+	# The number of entries per page (pagination)
+	self.per_page = 30
 end

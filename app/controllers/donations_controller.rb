@@ -9,12 +9,8 @@ class DonationsController < ApplicationController
   # GET /donations
   def index
     @search = Search.new  # Used for querying db
-    
-    if params[:crop]
-      @donations = Donation.where("crop = ?", params[:crop])
-    else
-      @donations = Donation.all
-    end
+
+    @donations = Donation.all.order("date DESC").paginate(:page => params[:page])
   end
 
   # show

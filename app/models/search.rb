@@ -14,7 +14,7 @@ private
   # Returns:
   #   The refined query
   def find_donations
-    donations = Donation.all.order("created_at DESC")
+    donations = Donation.all.order("date DESC")
     donations = donations.where("crop like ?", "%#{crop}%") if crop.present?
     donations = donations.where("date >= ?", min_date) if min_date.present?
     donations = donations.where("date <= ?", max_date) if max_date.present?
