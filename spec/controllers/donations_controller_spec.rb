@@ -92,7 +92,7 @@ RSpec.describe DonationsController, type: :controller do
     context "success" do
 
       it "deletes the donation" do
-        expect{ 
+        expect{
           delete :destroy, params:{id: @donation}
         }.to change(Donation, :count).by(-1)
       end

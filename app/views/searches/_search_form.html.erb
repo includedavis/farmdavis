@@ -1,0 +1,31 @@
+<div>
+<%= form_for @search do |f| %>
+  <p>
+    <%= f.label :crop %><br />
+    <%= f.text_field :crop %>
+  </p>
+
+  <p>
+    Date Range<br />
+    <%= f.date_field :min_date %>
+    <%= f.date_field :max_date %>
+  </p>
+
+  <p>
+    <%= f.label :harvested_from %><br />
+    <%= f.text_field :harvested_from %>
+  </p>
+
+  <p>
+    <%= f.label :donated_to %><br />
+    <%= f.text_field :donated_to %>
+  </p>
+
+  <p>
+    Quantity Range<br />
+    <%= f.number_field :min_quantity %>
+    <%= f.number_field :max_quantity %>
+  </p>
+  <%= f.submit "Search" %>
+<% end %>
+</div>

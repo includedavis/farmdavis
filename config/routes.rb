@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   # Donations: /donations
   resources :donations, only: [:show, :create, :index, :new, :edit, :update, :destroy]
 
+  # Searches: /searches
+  resources :searches, only: [:new, :show, :create]
+
   # Static Pages: /static_pages
   get 'static_pages/about'
   get 'static_pages/home'

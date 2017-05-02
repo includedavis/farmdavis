@@ -8,6 +8,8 @@ class DonationsController < ApplicationController
   #
   # GET /donations
   def index
+    @search = Search.new  # Used for querying db
+    
     if params[:crop]
       @donations = Donation.where("crop = ?", params[:crop])
     else
@@ -106,7 +108,7 @@ class DonationsController < ApplicationController
     def donation_params
       params.require(:donations)
     end
- 
+
 
 
     # subdonation_params
