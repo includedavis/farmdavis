@@ -13,3 +13,24 @@
  *= require_tree .
  *= require_self
  */
+
+td {
+  padding: 10px;
+  border-left: 1px solid black;
+}
+
+th {
+  border-bottom: 2px solid black;
+}
+
+.base-search {
+  display: inline-block;
+}
+
+.base-search-hidden {
+  display: none;
+}
+
+.full-search {
+  display: block;
+}

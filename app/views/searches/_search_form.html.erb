@@ -1,0 +1,55 @@
+<div>
+<%= form_for @search do |f| %>
+  <div syle="display: block;">
+    <p class="base-search">
+      <%= f.label :crop %><br />
+      <%= f.text_field :crop %>
+    </p>
+
+    <p class="base-search">
+      Date Range<br />
+      <%= f.date_field :min_date %>
+      <%= f.date_field :max_date %>
+    </p>
+  </div>
+
+  <div id="advanced-search-block">
+    <a id="advanced-search" href="#">Show more search options.</a>
+    <br />
+    <br />
+  </div>
+
+  <p class="base-search-hidden">
+    <%= f.label :harvested_from %><br />
+    <%= f.text_field :harvested_from %>
+  </p>
+
+  <p class="base-search-hidden">
+    <%= f.label :donated_to %><br />
+    <%= f.text_field :donated_to %>
+  </p>
+
+  <p class="base-search-hidden">
+    Quantity Range<br />
+    <%= f.number_field :min_quantity %>
+    <%= f.number_field :max_quantity %>
+  </p>
+  <%= f.submit "Search" %>
+<% end %>
+</div>
+
+<!-- I'll leave this script here considering the ui/ux isn't finalized -->
+<script>
+  $( '#advanced-search' ).click(function (event) {
+    event.preventDefault();
+    $( ".base-search" ).each(function() {
+      $( this ).toggleClass( "full-search base-search" );
+    });
+
+    $( ".base-search-hidden" ).each(function() {
+      $( this ).slideDown("slow");
+    });
+
+    $( "#advanced-search-block" ).toggleClass("base-search-hidden");
+  });
+</script>

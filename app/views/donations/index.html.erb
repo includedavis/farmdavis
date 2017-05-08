@@ -1,17 +1,11 @@
 <h1>Showing all <%= pluralize(@donations.count, "donation") %>.</h1>
 
-
-<%= form_tag("/donations", method: "get") do %>
-  <%= label_tag(:crop, "Crop type:") %>
-  <%= text_field_tag(:crop) %>
-
-  <%= label_tag(:quantity, "Quantity:") %>
-  <%= text_field_tag(:quantity) %>
-  <%= submit_tag("Search") %>
-<% end %>
-
+<%= render partial: "searches/search_form" %>
+<br />
+<hr />
+<br />
 <table>
-  <th>ID</th> <th>Date</th> <th>Crop</th> <th>Quantity</th> <th>Harvested from</th> <th>Donated to</th> <th>Comments</th>
+  <th>ID</th> <th>Date</th> <th>Crop</th> <th>Quantity</th> <th>Harvested from</th> <th>Donated to</th> <th>Comments</th> <th>Actions</th>
   <% @donations.each do |donation| %>
 
   <tr>
@@ -23,7 +17,10 @@
 
   <% end %>
 </table>
-
-
+<br />
+<%= will_paginate @donations %>
+<br />
+<hr />
+<br />
 <%= link_to "Home", root_path %>
 <%= link_to "Create Donation", new_donation_path %>
