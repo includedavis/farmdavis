@@ -34,3 +34,9 @@ th {
 .full-search {
   display: block;
 }
+
+/* Utility */
+
+.hidden {
+  display: none;
+}
