@@ -1,0 +1,49 @@
+<h1>Donation Search</h1>
+<table>
+  <tr>
+    <th>Crop</th>
+    <th>Min Date</th>
+    <th>Max Date</th>
+    <th>Harvested From</th>
+    <th>Donated To</th>
+    <th>Min Quantity</th>
+    <th>Max Quantity</th>
+  </tr>
+  <tr>
+    <td><%=@search.crop%></td>
+    <td><%=@search.min_date%></td>
+    <td><%=@search.max_date%></td>
+    <td><%=@search.harvested_from%></td>
+    <td><%=@search.donated_to%></td>
+    <td><%=@search.min_quantity%></td>
+    <td><%=@search.max_quantity%></td>
+  </tr>
+</table>
+
+<br />
+<hr />
+<br />
+
+<% if @search.donations == nil || @search.donations.count < 1 %>
+ <h3>No donations fit the given criteria.</h3>
+<% else %>
+  <table>
+    <th>ID</th> <th>Date</th> <th>Crop</th> <th>Quantity</th> <th>Harvested from</th> <th>Donated to</th> <th>Comments</th>
+    <% @search.donations.each do |donation| %>
+
+    <tr>
+      <td><%= donation.id %></td>
+    	<td><%= donation.date %></td> <td><%= donation.crop %></td> <td><%= donation.quantity %></td>
+    	<td><%= donation.donated_to %></td> <td><%= donation.harvested_from %></td> <td><%= donation.comments %></td>
+    	<td><%= link_to "Details", donation %>
+    </tr>
+
+    <% end %>
+  </table>
+<% end %>
+
+<%= link_to "Home", root_path %>
+<%= link_to "Create Donation", new_donation_path %>
+<%= link_to "Search Again", new_search_path %>
+<br />
+<%= link_to "View/Add Donations", donations_path %>

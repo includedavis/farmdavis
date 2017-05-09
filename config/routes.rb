@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   # Categories: /categories
   resources :categories, only: [:show, :create, :index, :new]
 
+  # Searches: /searches
+  resources :searches, only: [:new, :show, :create]
+
   # Static Pages: /static_pages
   get 'static_pages/about'
   get 'static_pages/home'

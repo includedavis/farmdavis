@@ -8,11 +8,9 @@ class DonationsController < ApplicationController
   #
   # GET /donations
   def index
-    if params[:crop]
-      @donations = Donation.where("crop = ?", params[:crop])
-    else
-      @donations = Donation.all
-    end
+    @search = Search.new  # Used for querying db
+
+    @donations = Donation.all.order("date DESC").paginate(:page => params[:page])
   end
 
   # show
@@ -43,13 +41,7 @@ class DonationsController < ApplicationController
     	@donation = Donation.new(subdonation_params donation)
       @donation.save
     end
-    @donations = Donation.all
-    render 'index'
-  	#if @donation.save
-  	#	redirect_to @donation
-  	#else
-  	#	render 'new'
-  	#end
+    redirect_to action: "index"
   end
 
   # edit
@@ -108,7 +100,7 @@ class DonationsController < ApplicationController
     def donation_params
       params.require(:donations)
     end
- 
+
 
 
     # subdonation_params
