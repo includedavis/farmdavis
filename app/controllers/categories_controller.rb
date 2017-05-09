@@ -19,8 +19,15 @@ class CategoriesController < ApplicationController
   def show
   	@category = Category.find(params[:id])
   end
-end
 
+  # edit
+  # ====
+  #   Edit an existing donation
+  #
+  # GET /donations/:id/edit
+  def edit
+    @category = Category.find(params[:id])
+  end
 
   private
 

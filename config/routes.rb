@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   # Crops: /crops
   resources :crops, only: [:show, :create, :index, :new]
 
+  # Categories: /categories
+  resources :categories, only: [:show, :create, :index, :new]
+
   # Static Pages: /static_pages
   get 'static_pages/about'
   get 'static_pages/home'
