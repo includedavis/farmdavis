@@ -5,14 +5,17 @@
 <hr />
 <br />
 <table>
-  <th>ID</th> <th>Date</th> <th>Crop</th> <th>Quantity</th> <th>Harvested from</th> <th>Donated to</th> <th>Comments</th> <th>Actions</th>
+  <th>ID</th> <th>Date</th> <th>Crop</th> <th>Quantity</th> <th>Harvested from</th> <th>Donated to</th> <th>Comments</th> <th colspan="2">Actions</th>
   <% @donations.each do |donation| %>
 
   <tr>
     <td><%= donation.id %></td>
   	<td><%= donation.date %></td> <td><%= donation.crop %></td> <td><%= donation.quantity %></td>
   	<td><%= donation.donated_to %></td> <td><%= donation.harvested_from %></td> <td><%= donation.comments %></td>
-  	<td><%= link_to "Details", donation %>
+  	<td>
+    <%= link_to "Details", donation %>
+    <%= link_to "Delete", donation, method: :delete, data: {confirm: "Are you sure?"}  %>
+    </td>
   </tr>
 
   <% end %>

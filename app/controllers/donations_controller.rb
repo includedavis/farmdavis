@@ -41,13 +41,7 @@ class DonationsController < ApplicationController
     	@donation = Donation.new(subdonation_params donation)
       @donation.save
     end
-    @donations = Donation.all
-    render 'index'
-  	#if @donation.save
-  	#	redirect_to @donation
-  	#else
-  	#	render 'new'
-  	#end
+    redirect_to action: "index"
   end
 
   # edit

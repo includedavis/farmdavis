@@ -1,10 +1,22 @@
 <h1> Add donations </h1>
-<%= form_tag "/donations" do %>
-  <% 10.times do %>
-  	<div class ="row">
-    	<%= render 'donation_form' %>  
-    </div>   
-  <% end %>
-  <%= submit_tag "Submit" %>
+<%= form_tag "/donations", :html => {:id => "donation_form"} do %>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Crop</th>
+      <th>Quantity</th>
+      <th>Harvested From</th>
+      <th>Donated To</th>
+      <th>Comments/Notes</th>
+    </tr>
+    <% 10.times do %>
+      <%= render 'donation_form' %>
+    <% end %>
+  </table>
+  <br />
+  <div style="display: inline-block;">
+    <%= submit_tag "Submit", :style => "display: inline;" %>
+  </div>
 <% end %>
+<hr />
 <%= link_to "Home", root_path %>
