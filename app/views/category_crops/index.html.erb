@@ -11,7 +11,7 @@
     <td><%= category_crop.id %></td>
     <td><%= category_crop.category.name %></td>
     <td><%= category_crop.crop.name %></td>
-    <td><%= link_to "Delete" %>
+    <td><%= link_to "Delete", category_crop, method: :delete, data: {confirm: "Are you sure?"}  %></td>
   </tr>
 <% end %>
 </table>

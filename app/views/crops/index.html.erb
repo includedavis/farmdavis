@@ -9,6 +9,7 @@
   <tr>
     <td><%= crop.id %></td>
     <td><%= crop.name %></td>
+    <td><%= link_to "Delete", crop, method: :delete, data: {confirm: "Are you sure? Crop will be deleted from all associated categories"} %></td>
   </tr>
 <% end %>
 </table>

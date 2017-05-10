@@ -20,6 +20,13 @@ class CropsController < ApplicationController
   def show
   	@crop = Crop.find(params[:id])
   end
+
+  def destroy
+    @crop = Crop.find(params[:id])
+    @crop.category_crops.destroy_all
+    @crop.destroy
+    redirect_to crops_path
+  end
 end
 
 

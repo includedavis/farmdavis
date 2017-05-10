@@ -9,9 +9,10 @@
   <tr>
     <td><%= category.id %></td>
     <td><%= category.name %></td>
-    <td><%= link_to "Details", category %>
-    <td><%= link_to "Edit", edit_category_path(category) %>
-    <td><%= link_to "Add crops", new_category_crop_path %>
+    <td><%= link_to "Details", category %></td>
+    <td><%= link_to "Edit", edit_category_path(category) %></td>
+    <td><%= link_to "Add crops", new_category_crop_path({:category => category.id}) %></td>
+    <td><%= link_to "Delete", category, method: :delete, data: {confirm: "Are you sure?"}  %></td>
   </tr>
 <% end %>
 </table>

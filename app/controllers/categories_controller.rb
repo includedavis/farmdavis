@@ -27,6 +27,7 @@ class CategoriesController < ApplicationController
   # GET /donations/:id/edit
   def edit
     @category = Category.find(params[:id])
+
   end
 
   # update
@@ -42,6 +43,13 @@ class CategoriesController < ApplicationController
       flash[:warning] = "Could not save edits"
       render 'edit' #need to flash a failure message
     end
+  end
+
+  def destroy
+    @category = Category.find(params[:id])
+    @category.category_crops.destroy_all
+    @category.destroy
+    redirect_to categories_path
   end
 
   private

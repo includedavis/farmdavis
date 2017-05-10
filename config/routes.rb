@@ -29,10 +29,10 @@ Rails.application.routes.draw do
   resources :donations, only: [:show, :create, :index, :new, :edit, :update, :destroy]
 
   # Crops: /crops
-  resources :crops, only: [:show, :create, :index, :new, :edit, :update]
+  resources :crops
 
   # Categories: /categories
-  resources :categories, only: [:show, :create, :index, :new, :edit, :update]
+  resources :categories
 
   # Category Crops
   resources :category_crops
