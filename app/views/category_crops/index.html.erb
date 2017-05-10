@@ -1,0 +1,19 @@
+<h1>Showing all <%= pluralize(@category_crops.count, "Category Crop Relations") %>.</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Category</th>
+    <th>Crop</th>
+  </tr>
+<% @category_crops.each do |category_crop| %>
+  <tr>
+    <td><%= category_crop.id %></td>
+    <td><%= category_crop.category.name %></td>
+    <td><%= category_crop.crop.name %></td>
+    <td><%= link_to "Delete" %>
+  </tr>
+<% end %>
+</table>
+<%= link_to "Home", root_path %>
+<%= link_to "Add crops to categories", new_category_crop_path %>

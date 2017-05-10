@@ -29,6 +29,21 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
   end
 
+  # update
+  # ======
+  #   Update an existing donation
+  # PUT /donations/:id/update
+  def update
+    @category = Category.find(params[:id])
+    if @category.update_attributes(category_params)
+      flash[:success] = "Category sucessfully updated"
+      redirect_to @category
+    else
+      flash[:warning] = "Could not save edits"
+      render 'edit' #need to flash a failure message
+    end
+  end
+
   private
 
     def category_params

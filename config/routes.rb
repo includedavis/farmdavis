@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'category_crops/new'
+
+  get 'category_crops/create'
+
+  get 'category_crops/show'
+
+  get 'category_crops/edit'
+
+  get 'category_crops/update'
+
   get 'categories/new'
 
   get 'categories/show'
@@ -19,10 +29,13 @@ Rails.application.routes.draw do
   resources :donations, only: [:show, :create, :index, :new, :edit, :update, :destroy]
 
   # Crops: /crops
-  resources :crops, only: [:show, :create, :index, :new]
+  resources :crops, only: [:show, :create, :index, :new, :edit, :update]
 
   # Categories: /categories
-  resources :categories, only: [:show, :create, :index, :new]
+  resources :categories, only: [:show, :create, :index, :new, :edit, :update]
+
+  # Category Crops
+  resources :category_crops
 
   # Searches: /searches
   resources :searches, only: [:new, :show, :create]

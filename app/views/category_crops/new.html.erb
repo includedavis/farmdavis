@@ -1,0 +1,14 @@
+<h1>Add crops to category</h1>
+
+<%= form_tag "/category_crops", :method=>'post', :multipart => true do %>
+	
+	Category
+	<%= text_field_tag "category" %>
+	Crops
+	<%= text_field_tag "crops[]" %>
+	<%= text_field_tag "crops[]" %>
+	<%= text_field_tag "crops[]" %>
+	<%= text_field_tag "crops[]" %>
+
+	<%= submit_tag "Submit" %>
+<% end %>
