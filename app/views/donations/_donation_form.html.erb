@@ -1,6 +1,6 @@
 <tr>
   <td><%= date_field_tag "donations[][date]" %></td>
-  <td><%= text_field_tag "donations[][crop]" %></td>
+  <td><%= select_tag "donations[][category_id]", options_from_collection_for_select(Category.order(:name).all, "id", "name", params[:category]), include_blank: true %></td>
   <td><%= number_field_tag "donations[][quantity]" %></td>
   <td><%= text_field_tag "donations[][harvested_from]" %></td>
   <td><%= text_field_tag "donations[][donated_to]" %></td>

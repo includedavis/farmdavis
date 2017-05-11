@@ -38,6 +38,7 @@ class DonationsController < ApplicationController
   def create
     @donations = donation_params
     @donations.each do |donation|
+      puts donation
     	@donation = Donation.new(subdonation_params donation)
       @donation.save
     end
@@ -90,7 +91,7 @@ class DonationsController < ApplicationController
     end
 
     def full_donation_params
-      params.require(:donation).permit(:date, :crop, :quantity,
+      params.require(:donation).permit(:date, :category_id, :quantity,
                                    :harvested_from, :donated_to, :comments)
     end
 
@@ -107,7 +108,7 @@ class DonationsController < ApplicationController
     # ===============
     #   Trusted paramaters
     def subdonation_params(subparams)
-      subparams.permit(:date, :crop, :quantity,
+      subparams.permit(:date, :category_id, :quantity,
         :donated_to, :harvested_from, :comments)
     end
 end

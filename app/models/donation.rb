@@ -1,11 +1,12 @@
-#Donation
-#date crop quantity harvested_from donated_to comments
+# DONATION
+# --------
+# DATE QUANTITY HARVESTED_FROM DONATED_TO COMMENTS CATEGORY_ID
 
 class Donation < ApplicationRecord
 	validates :date, presence: true
-	validates :crop, presence: true
+	validates :category_id, presence: true
 	validates :quantity, presence: true
-	before_save {self.crop = crop.downcase } # all crop names should be lowercase
+	belongs_to :category
 
 	# The number of entries per page (pagination)
 	self.per_page = 30
