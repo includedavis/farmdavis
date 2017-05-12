@@ -1,0 +1,20 @@
+<h1>Showing all <%= pluralize(@categories.count, "categories") %>.</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+  </tr>
+<% @categories.each do |category| %>
+  <tr>
+    <td><%= category.id %></td>
+    <td><%= category.name %></td>
+    <td><%= link_to "Crops", category %></td>
+    <td><%= link_to "Edit Name", edit_category_path(category) %></td>
+    <td><%= link_to "Add Crops", new_category_crop_path({:category => category.id}) %></td>
+    <td><%= link_to "Delete", category, method: :delete, data: {confirm: "Are you sure? Deleting a category will delete all associated donation records, and this cannot be reversed"}  %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to "Home", root_path %>
+<%= link_to "Create Category", new_category_path %>

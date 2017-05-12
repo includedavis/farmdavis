@@ -1,0 +1,18 @@
+<h1>Add crops to category</h1>
+
+<%= form_tag "/category_crops", :method=>'post', :multipart => true do %>
+	
+	Category
+	<%= select_tag "category", options_from_collection_for_select(Category.order(:name).all, "id", "name", params[:category]) %>
+	Crops
+	<%= select_tag "crops[]", options_from_collection_for_select(Crop.order(:name).all, "id", "name"), include_blank: true %>
+	<%= select_tag "crops[]", options_from_collection_for_select(Crop.order(:name).all, "id", "name"), include_blank: true %>
+	<%= select_tag "crops[]", options_from_collection_for_select(Crop.order(:name).all, "id", "name"), include_blank: true %>
+	<%= select_tag "crops[]", options_from_collection_for_select(Crop.order(:name).all, "id", "name"), include_blank: true %>
+	<%= select_tag "crops[]", options_from_collection_for_select(Crop.order(:name).all, "id", "name"), include_blank: true %>
+
+	<%= submit_tag "Submit" %>
+<% end %>
+
+<%= link_to "Home", root_path %>
+<%= link_to "All Category Crop relations", category_crops_path %>

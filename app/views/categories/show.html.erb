@@ -1,0 +1,15 @@
+<h1> Category <%= @category.id %>: <%= @category.name %> </h1>
+
+<table>
+  <tr>
+    <th>Crops in Category <%= @category.name %></th>
+  </tr>
+<% @crops.each do |crop| %>
+  <tr>
+    <td><%= crop.name %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to "Home", root_path %>
+<%= link_to "View All", categories_path %>

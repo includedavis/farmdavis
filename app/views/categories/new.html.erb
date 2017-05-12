@@ -1,0 +1,13 @@
+<h1> Add category </h1>
+
+<%= form_for(@category) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.submit "Add new category", class: "btn btn-primary" %>
+
+<% end %>
+
+<%= link_to "Home", root_path %>
+<%= link_to "Crops", crops_path %>
+<%= link_to "Categories", categories_path %>
