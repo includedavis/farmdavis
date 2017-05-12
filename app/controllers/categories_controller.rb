@@ -18,6 +18,7 @@ class CategoriesController < ApplicationController
 
   def show
   	@category = Category.find(params[:id])
+    @crops = @category.crops
   end
 
   # edit
@@ -48,6 +49,7 @@ class CategoriesController < ApplicationController
   def destroy
     @category = Category.find(params[:id])
     @category.category_crops.destroy_all
+    @category.donations.destroy_all
     @category.destroy
     redirect_to categories_path
   end

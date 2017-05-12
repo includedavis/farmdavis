@@ -10,7 +10,7 @@ class CategoryCropsController < ApplicationController
   end
 
   def create
-    if Category.exists?(params[:category])
+    if Category.exists?(params[:category]) # extra insurance
       @category = Category.find(params[:category])
     else
       flash[:alert] = "Category does not exist"
@@ -24,9 +24,7 @@ class CategoryCropsController < ApplicationController
           @crop = Crop.find(crop)
           @category_crop = CategoryCrop.new({:category => @category, :crop => @crop})
           if !@category_crop.save
-            flash[:alert] = "Failure at crop " + crop + ". Previous crops have been added"
-            @category_crops = CategoryCrop.all
-            render action: "index" and return
+            flash[:alert] = "Some crop(s) could not be added to category. Maybe they already exist!"
           end
         else
           flash[:alert] = "Crop " + crop + " does not exist. Previous crops have been added"

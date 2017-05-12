@@ -11,6 +11,13 @@ class CropsController < ApplicationController
   def create
   	@crop = Crop.new(crop_params)
   	if @crop.save
+      @category = Category.new(crop_params)
+      if @category.save
+        CategoryCrop.create(category: @category, crop: @crop)
+        flash[:success] = "Automatically created an associated category"
+      else
+        flash[:alert] = "Could not automatically create associated single-crop category"
+      end
   		redirect_to @crop
   	else
   		render 'new'
