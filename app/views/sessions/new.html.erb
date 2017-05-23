@@ -9,10 +9,12 @@
 	        <%= password_field_tag :password, "", type: 'password', class: "form-control" %> <br />
 	        <%= submit_tag "Submit", class: "btn btn-lg btn-primary btn-block" %>
 	<% end %>
+	<div class="home">
+		<%= link_to "Back", root_path %>
+	</div>
 </div>
 <br />
-<%= link_to "Signup", signup_path %>
-<%= link_to "Home", root_path %>
+<%= link_to "Signup", signup_path%>
 
 <!-- reference: https://getbootstrap.com/examples/signin/ -->
 
