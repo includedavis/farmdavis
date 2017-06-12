@@ -1,5 +1,5 @@
 class DonationsController < ApplicationController
-  before_action :require_user, only: [:create, :new, :edit, :update]
+  before_action :require_user, only: [:create, :new, :edit, :update, :index]
   before_action :set_donation, only: [:show, :edit, :destroy]
 
   # index
