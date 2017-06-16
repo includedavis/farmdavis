@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Farmdavis</title>
+    <title>Farm Davis</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -11,10 +11,50 @@
   <body>
     <p id="notice"><%= notice %></p>
     <p id="alert"><%= alert %></p>
+
+    <% unless action_name == "new" %>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- <a class="navbar-brand" href="#"><%=image_tag("FarmDavis.png", :style => "max-height: 40px; margin-top: -10px;")%></a> -->
+          <%= link_to root_path, class:"navbar-brand" do %>
+            <%=image_tag("FarmDavis.png", :style => "max-height: 40px; margin-top: -10px;")%>
+          <% end %>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><%= link_to "Record Donation", new_donation_path %></li>
+            <li><%= link_to "Donations", donations_path %></li>
+            <li><%= link_to "Crops", crops_path %></li>
+            <li><%= link_to "Categories", categories_path %></li>
+            <li><%= link_to "Relations", category_crops_path %></li>
+          </ul>
+          <% if current_user %>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "User", user_path(current_user) %></li>
+            <li><%= link_to "Logout", logout_path %></li>
+          </ul>
+          <% end %>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <% end %>
+
     <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-      <% end %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+
+    <div class="container">
     <%= yield %>
-    <%= debug(params) if Rails.env.development? %>
+    </div>
+    <!-- <%= debug(params) if Rails.env.development? %> -->
   </body>
+
 </html>

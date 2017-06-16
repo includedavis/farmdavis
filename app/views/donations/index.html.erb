@@ -1,9 +1,13 @@
-<h1>Showing all <%= pluralize(@donations.count, "donation") %>.</h1>
+<h1>Donations</h1>
 
 <%= render partial: "searches/search_form" %>
 <br />
 <hr />
+<div><%= link_to "Record New Donation", new_donation_path, class: "btn-lg" %></div>
 <br />
+
+<h3>Showing all <%= pluralize(@donations.count, "donation") %>.</h3>
+
 <table>
   <th>ID</th> <th>Date</th> <th>Category/Crop</th> <th>Quantity</th> <th>Harvested from</th> <th>Donated to</th> <th>Comments</th> <th colspan="2">Actions</th>
   <% @donations.each do |donation| %>
@@ -12,10 +16,8 @@
     <td><%= donation.id %></td>
   	<td><%= donation.date %></td> <td><%= donation.category.name %></td> <td><%= donation.quantity %></td>
   	<td><%= donation.donated_to %></td> <td><%= donation.harvested_from %></td> <td><%= donation.comments %></td>
-  	<td>
-    <%= link_to "Details", donation %>
-    <%= link_to "Delete", donation, method: :delete, data: {confirm: "Are you sure?"}  %>
-    </td>
+  	<td><%= link_to "Details", donation %></td>
+    <td><%= link_to "Delete", donation, method: :delete, data: {confirm: "Are you sure?"}  %></td>
   </tr>
 
   <% end %>
