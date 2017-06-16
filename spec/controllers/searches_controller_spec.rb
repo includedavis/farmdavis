@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'seed_helper'
 
 RSpec.describe SearchesController, type: :controller do
   describe "GET show" do
@@ -36,6 +37,21 @@ RSpec.describe SearchesController, type: :controller do
 
       get :create, params: {search: FactoryGirl.attributes_for(:Search)}
       expect(Search.count).to eql(search_count + 1)
+    end
+
+    context "when searching with a crop name" do
+      it "should return only crops in the associated category" do
+        login_user
+
+        # Load fake data
+        fake_seed
+
+        get :create, params: {search: FactoryGirl.attributes_for(:Search, crop: "corn")}
+        donations = Search.last.find_donations
+        donation.each do |d|
+          expect(d.crop).to eql("corn")
+        end
+      end
     end
   end
 end

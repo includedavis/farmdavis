@@ -59,6 +59,10 @@ group :development do
   # Better error messages
   gem "better_errors"
   gem "binding_of_caller"
+  # Help visualize db
+  gem "rails-erd"
+  # Better tabe prints
+  gem 'hirb'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
