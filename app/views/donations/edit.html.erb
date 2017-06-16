@@ -1,27 +1,28 @@
-<h1>Editing Donation <%= @donation.id %></h1>
+<div class="form-signin">
+  <h1>Edit Donation <%= @donation.id %></h1>
 
-<%= form_for(@donation) do |f| %>
+  <%= form_for(@donation) do |f| %>
 
-  <%= f.label :date %>
-  <%= f.date_field :date, class: 'form-control' %>
+    <%= f.label :date %>
+    <%= f.date_field :date, class: 'form-control' %>
 
-  <%= f.label :crop %>
-  <%= f.text_field :crop, class: 'form-control' %>
+    <%= f.label :crop %>
+    <%= f.text_field :crop, class: 'form-control' %>
 
-  <%= f.label :quantity %>
-  <%= f.number_field :quantity, class: 'form-control' %>
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity, class: 'form-control' %>
 
-  <%= f.label :harvested_from %>
-  <%= f.text_field :harvested_from, class: 'form-control' %>
+    <%= f.label :harvested_from %>
+    <%= f.text_field :harvested_from, class: 'form-control' %>
 
-  <%= f.label :donated_to %>
-  <%= f.text_field :donated_to, class: 'form-control' %>
+    <%= f.label :donated_to %>
+    <%= f.text_field :donated_to, class: 'form-control' %>
 
-  <%= f.label :comments %>
-  <%= f.text_field :comments, class: 'form-control' %>
+    <%= f.label :comments %>
+    <%= f.text_field :comments, class: 'form-control' %>
+    </br>
+    </br>
 
-  <%= f.submit "Submit", class: "btn btn-primary" %>
-<% end %>
-
-<%= link_to "Home", root_path %>
-<%= link_to "View All", donations_path %>
+    <%= f.submit "Submit", class: "btn btn-lg btn-primary btn-block" %>
+  <% end %>
+</div>
