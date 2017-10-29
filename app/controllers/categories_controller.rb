@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   def index
-  	@categories = Category.all
+  	@categories = Category.where(singular: false)
   end
 
   def new
@@ -11,7 +11,8 @@ class CategoriesController < ApplicationController
   	@category = Category.new(category_params)
   	if @category.save
   		redirect_to @category
-  	else
+    else
+      flash.now[:warning] = @category.errors.full_messages.to_sentence
   		render 'new'
   	end
   end

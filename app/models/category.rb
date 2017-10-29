@@ -1,6 +1,6 @@
 # CATEGORY
 # --------
-# id, name
+# id, name, singular
 
 class Category < ApplicationRecord
 	has_many :category_crops
