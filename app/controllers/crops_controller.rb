@@ -1,7 +1,7 @@
 class CropsController < ApplicationController
 
   def index
-  	@crops = Crop.all
+  	@crops = Crop.all.order(:name)
   end
 
   def new
@@ -29,6 +29,9 @@ class CropsController < ApplicationController
 
   def destroy
     @crop = Crop.find(params[:id])
+    @category = Category.where(name: @crop.name)
+      .where(singular: true)
+      .destroy_all
     @crop.category_crops.destroy_all
     @crop.destroy
     redirect_to crops_path

@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   def index
-  	@categories = Category.where(singular: false)
+  	@categories = Category.where(singular: false).order(:name)
   end
 
   def new
