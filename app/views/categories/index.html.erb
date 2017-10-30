@@ -4,12 +4,10 @@
 
 <table>
   <tr>
-    <th>ID</th>
     <th>Name</th>
   </tr>
 <% @categories.each do |category| %>
   <tr>
-    <td><%= category.id %></td>
     <td><%= category.name %></td>
     <td><%= link_to "Crops", category %></td>
     <td><%= link_to "Edit Name", edit_category_path(category) %></td>
