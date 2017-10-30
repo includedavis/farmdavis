@@ -5,10 +5,12 @@
 <table>
   <tr>
     <th>Name</th>
+    <th># of Crops</th>
   </tr>
 <% @categories.each do |category| %>
   <tr>
     <td><%= category.name %></td>
+    <td><%= category.crops.count %></td>
     <td><%= link_to "Crops", category %></td>
     <td><%= link_to "Edit Name", edit_category_path(category) %></td>
     <td><%= link_to "Add Crops to Category", new_category_crop_path({:category => category.id}) %></td>
