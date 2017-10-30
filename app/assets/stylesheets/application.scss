@@ -15,12 +15,20 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.nav {
+  font-size: 18px;
+  color: black;
+}
+
 td {
   padding: 10px;
-  border-left: 1px solid black;
+  border: 1px solid black;
 }
 
 th {
+  text-align: center;
+  padding-left: 6px;
+  padding-right: 6px;
   border-bottom: 2px solid black;
 }
 
